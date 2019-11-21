@@ -24,14 +24,7 @@ with open('toilet_locations.csv', 'r') as csvfile:
 
 print(data)
 db = firestore.client()
-curr_lat = "53.33"
-curr_long= "-6.24"
-origin = (curr_lat, curr_long)
-results = []
-gmaps = googlemaps.Client(key=API_key)
 
-min_distance = 10000000000000000
-closest_toilet = ""
 for item in data:
    print(f'item: {item}')
    doc_ref = db.collection(u'toilet_locations').document(item[0])
@@ -41,19 +34,9 @@ for item in data:
 	 u'long': item[3], 
      u'name' : item[0]
     })
-   destination = (item[2], item[3])
-   result = gmaps.distance_matrix(origin, destination, mode='walking')["rows"][0]["elements"][0]["distance"]["value"]
-   if(result<min_distance):
-     min_distance = result
-     closest_toilet = item[0]
-      #append result to list 
-     results.append((item, result))
 
 
 
-print(results)
-print(min_distance)
-print(closest_toilet)
 
 
 
