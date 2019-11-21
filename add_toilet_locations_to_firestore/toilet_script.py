@@ -28,7 +28,6 @@ curr_lat = "53.33"
 curr_long= "-6.24"
 origin = (curr_lat, curr_long)
 results = []
-API_key = 'AIzaSyDMow-hoMzt1sgMLbfq1e3ymdhWpPg3CLw'#enter Google Maps API key
 gmaps = googlemaps.Client(key=API_key)
 
 min_distance = 10000000000000000
